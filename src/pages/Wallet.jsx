@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import axios from "axios";
 
 export default function Wallet() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   const [wallet, setWallet] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,50 +36,50 @@ export default function Wallet() {
   };
 
   return (
-    <div className="d-flex w-100 flex-column ">
-      <div className="p-2 m-2">
-        {isLoading ? (
-          <h1 className="font-weight-bold text-center text-uppercase">
-            Loading ...
-          </h1>
-        ) : (
-          <h1 className="font-weight-bold text-center text-uppercase">
-            Wallet Balance
-          </h1>
-        )}
-        <form className="w-100 d-flex justify-content-center align-items-center">
-          <input
-            className="p-2 m-2 w-25"
-            type="text"
-            placeholder="type your eth/bnb wallet address here..."
-            value={wallet}
-            onChange={handleChange}
-          />
-          <Button
-            onClick={handleSubmit}
-            variant="danger"
-            className="btn p-2 m-2"
-          >
-            Get Balance
-          </Button>
-        </form>
-        <ul class="list-group align-items-center justify-items-center">
-          {data?.data?.items.map((item, i) =>
-            item.balance > 0 && item.balance !== "0" ? (
-              <li className="list-group-item d-flex w-50" key={i}>
-                <h3 className="p-2 me-auto">
-                  {item.contract_ticker_symbol}({item.contract_name}):
-                </h3>
-                <h3 className="p-2 text-muted">
-                  {formatter.format(
-                    parseFloat(item.balance * 0.000000000000000001)
-                  )}
-                </h3>
-              </li>
-            ) : null
-          )}
-        </ul>
-      </div>
+    <div className="container">
+      {isLoading ? <h1>Loading ...</h1> : <h1>Wallet Balance</h1>}
+      <form>
+        <div className="container">
+          <label htmlFor="wallet">
+            <input
+              type="text"
+              id="wallet"
+              placeholder="type your eth/bnb wallet address here..."
+              value={wallet}
+              onChange={handleChange}
+            />
+          </label>
+          <button onClick={handleSubmit}>Get Balance</button>
+        </div>
+      </form>
+      {data != null ? (
+        <table role="grid">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Coin</th>
+              <th scope="col">Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data?.data?.items.map((item, i) =>
+              item.balance > 0 && item.balance !== "0" ? (
+                <tr key={i}>
+                  <td>{i}</td>
+                  <td>
+                    {item.contract_ticker_symbol}({item.contract_name})
+                  </td>
+                  <td>
+                    {formatter.format(
+                      parseFloat(item.balance * 0.000000000000000001)
+                    )}
+                  </td>
+                </tr>
+              ) : null
+            )}
+          </tbody>
+        </table>
+      ) : null}
     </div>
   );
 }
