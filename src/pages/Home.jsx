@@ -2,6 +2,7 @@ import React, { useState, useId, useEffect } from "react";
 import AddCoinForm from "../components/AddCoinForm";
 import Card from "../components/Card";
 import axios from "axios";
+import Search from "../components/Search";
 
 export default function Home() {
   const [error, setError] = useState("");
@@ -22,7 +23,6 @@ export default function Home() {
     if (cards.some((item) => coin === item.id)) {
       setError("coin already exists");
     } else {
-      console.log("coin doesn't exists");
       const API_URL = import.meta.env.VITE_API_URL;
       if (coin) {
         const resp = await axios.get(
@@ -57,31 +57,27 @@ export default function Home() {
   };
 
   return (
-    <div className="d-flex flex-column">
-      <div className="d-flex justify-content-center align-items-center m-2">
+    <div className="container">
+      <div>
         <AddCoinForm handleSubmit={handleSubmit} />
+        <Search />
       </div>
-      {error && (
-        <span className="text-center p-2 text-danger bg-danger text-white font-weight-bold text-uppercase ">
-          {error}
-        </span>
-      )}
-      <div className="d-flex gap-2 flex-wrap justify-content-center align-items-center">
-        {cards.map((item) => (
-          <div key={cardID}>
-            {
-              <Card
-                handleDelete={() => handleDelete(item.id)}
-                coin={item.coin}
-                symbol={item.symbol}
-                current_price={item.current_price}
-                price_change_percentage_24h={item.price_change_percentage_24h}
-                price_change_24h={item.price_change_24h}
-                image={item.image}
-              />
-            }
-          </div>
-        ))}
+      {error && <span>{error}</span>}
+      <div>
+        <div className="container">
+          {cards.map((item) => (
+            <Card
+              key={cardID}
+              handleDelete={() => handleDelete(item.id)}
+              coin={item.coin}
+              symbol={item.symbol}
+              current_price={item.current_price}
+              price_change_percentage_24h={item.price_change_percentage_24h}
+              price_change_24h={item.price_change_24h}
+              image={item.image}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

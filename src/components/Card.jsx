@@ -1,6 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import { Card as BSCard } from "react-bootstrap";
 import { formatCurrency } from "../utils/formatCurrency";
 
 export default function Card({
@@ -12,24 +10,25 @@ export default function Card({
   handleDelete,
 }) {
   return (
-    <div>
-      <BSCard className="bg-dark text-white m-2 p-4 border-dark ">
-        <BSCard.Img variant="top" className="rounded float-left w-25" src={image} />
-        <BSCard.Body>
-          <BSCard.Title>Ticker: {symbol}</BSCard.Title>
-          <BSCard.Text>
-            Price: {formatCurrency(current_price)}
-            <br />
-            Price change: {price_change_percentage_24h}
-            <br />
-            Price change 24hrs: {formatCurrency(price_change_24h)}
-            <br />
-          </BSCard.Text>
-          <Button onClick={handleDelete} variant="primary">
-            Remove
-          </Button>
-        </BSCard.Body>
-      </BSCard>
-    </div>
+    <article>
+      <header>
+        <img src={image} className="coin-img" />
+      </header>
+      <h2>Ticker: {symbol}</h2>
+      <div className="container">
+        <h6>
+          Price: <strong>{formatCurrency(current_price)}</strong>
+        </h6>
+        <h6>
+          Price change: <strong>{price_change_percentage_24h}</strong>{" "}
+        </h6>
+        <h6>
+          Price change 24hrs: <strong>{formatCurrency(price_change_24h)}</strong>
+        </h6>
+      </div>
+      <button onClick={handleDelete} className="user-valid valid">
+        Remove
+      </button>
+    </article>
   );
 }
