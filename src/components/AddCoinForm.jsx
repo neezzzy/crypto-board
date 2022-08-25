@@ -35,7 +35,7 @@ export default function AddCoinForm({ handleSubmit }) {
           <option value="cad">CAD</option>
         </select>
         <button onClick={(e) => handleSubmit(e, values)}>
-          <AiOutlinePlusCircle size="3rem" />
+          <AiOutlinePlusCircle size="50px" />
         </button>
       </form>
     </article>

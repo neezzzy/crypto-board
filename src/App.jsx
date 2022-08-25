@@ -9,17 +9,13 @@ import Wallet from "./pages/Wallet";
 function App() {
   return (
     <ThemeProvider>
-      <div>
-        <Navbar />
-        <div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/charts" element={<Charts />} />
-            <Route path="/wallet" element={<Wallet />} />
-            <Route />
-          </Routes>
-        </div>
-      </div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/charts" element={<Charts />} />
+        <Route path="/wallet" element={<Wallet />} />
+        <Route />
+      </Routes>
     </ThemeProvider>
   );
 }

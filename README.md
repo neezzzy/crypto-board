@@ -75,7 +75,8 @@
 ## Roadmap
 
 - [ ] Real time charts
-- [ ] Login and Authentication
+- [x] Search functionality
+- [x] Responsive Design
 - [x] Dark and Light theme
   - [x] React Context API
 

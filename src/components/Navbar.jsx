@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ThemeSwitch from "./ThemeSwitch";
 
 export default function Navbar() {
   return (
-    <nav className="container">
+    <nav className="container-fluid">
       <ul>
         <li>
           <strong>
@@ -12,34 +12,17 @@ export default function Navbar() {
           </strong>
         </li>
       </ul>
-
       <ul>
         <li>
-          <CustomLink to="/">Home</CustomLink>
+          <Link to="/wallet">Wallet</Link>
         </li>
         <li>
-          <CustomLink to="/wallet">Wallet</CustomLink>
+          <Link to="/charts">Charts</Link>
         </li>
         <li>
-          <CustomLink to="/charts">Charts</CustomLink>
-        </li>
-        <li>
-        <ThemeSwitch />
+          <ThemeSwitch />
         </li>
       </ul>
     </nav>
-  );
-}
-
-function CustomLink({ to, children, ...props }) {
-  const resolvedPath = useResolvedPath(to);
-  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
-
-  return (
-    <li className={isActive ? "active" : ""}>
-      <Link to={to} {...props}>
-        {children}
-      </Link>
-    </li>
   );
 }

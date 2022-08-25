@@ -1,11 +1,14 @@
 import React from "react";
 
-import { AiOutlineSearch } from "react-icons/ai";
-
-export default function Search() {
+export default function Search({ handleSearch, query }) {
   return (
     <form className="container">
-      <input type="text" placeholder="Filter cards..." />
+      <input
+        onChange={(e) => handleSearch(e)}
+        value={query}
+        type="text"
+        placeholder="Filter by coin name..."
+      />
     </form>
   );
 }

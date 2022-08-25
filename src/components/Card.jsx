@@ -11,24 +11,26 @@ export default function Card({
 }) {
   return (
     <article>
-      <header>
+      <header className="img-container">
         <img src={image} className="coin-img" />
       </header>
-      <h2>Ticker: {symbol}</h2>
+      <h3>Ticker: {symbol}</h3>
       <div className="container">
-        <h6>
+        <p>
           Price: <strong>{formatCurrency(current_price)}</strong>
-        </h6>
-        <h6>
-          Price change: <strong>{price_change_percentage_24h}</strong>{" "}
-        </h6>
-        <h6>
-          Price change 24hrs: <strong>{formatCurrency(price_change_24h)}</strong>
-        </h6>
+        </p>
+        <p>
+          Price Δ: <strong>{price_change_percentage_24h}</strong>{" "}
+        </p>
+        <p>
+          Price Δ 24h: <strong>{formatCurrency(price_change_24h)}</strong>
+        </p>
       </div>
-      <button onClick={handleDelete} className="user-valid valid">
-        Remove
-      </button>
+      <div className="btn-holder">
+        <button onClick={handleDelete} className="remove-btn">
+          Remove
+        </button>
+      </div>
     </article>
   );
 }

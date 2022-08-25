@@ -14,17 +14,69 @@ html {
   scroll-behavior: smooth;
 }
 
-.coin-img {
-  max-width: 50%;
+/* cards container */
+.main {
+  width: 100%;
+  position: relative;
+}
+
+.main-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: auto;
 }
+
+.coin-img {
+  width: 50%;
+}
+
+.btn-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-message {
+  color: #d81b60;
+  /* display: flex;
+  justify-content: flex-start;
+  align-items: center; */
+  /* width: 85%; */
+  top: 0.3rem;
+  left: 10%;
+  position: absolute;
+}
+
+/* card */
+@media only screen and (max-width: 752px) {
+  .main-cards-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 472px) {
+  .main-cards-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+}
+
+/* theme switch component */
+
 #theme-switch {
   position: relative;
   width: fit-content;
   height: fit-content;
   touch-action: pan-x;
   user-select: none;
-
 }
 #theme-switch input {
   cursor: pointer;
