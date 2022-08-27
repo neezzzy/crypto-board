@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <h1 align="center">Crypto Dashboard</h1>
+  <h1 align="center">Crypto Dashboard with the latest prices, charts and wallet balance functionality. </h1>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -31,7 +31,8 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-![Product Name Screen Shot](/images/Screenshot.png)
+![Product Name Screen Shot](/images/Screenshot_Crypto%20Dashboard_1.png)
+![Product Name Screen Shot](/images/Screenshot_Crypto%20Dashboard_2.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -40,6 +41,7 @@
 - React.JS
 - Pico.CSS
 - CoinGecko API
+- CoinCap API
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -54,16 +56,15 @@
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/neezzzy/crypto-board.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `.env`
+3. Enter your API in `.env`
    ```env
    const API_KEY = 'ENTER YOUR API';
    ```
@@ -75,6 +76,7 @@
 ## Roadmap
 
 - [ ] Real time charts
+- [ ] Implement charts
 - [x] Search functionality
 - [x] Responsive Design
 - [x] Dark and Light theme
