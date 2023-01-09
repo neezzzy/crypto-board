@@ -7,8 +7,10 @@ import Search from "../components/Search";
 export default function Home() {
   const [error, setError] = useState("");
   const [cards, setCards] = useState(
-    JSON.parse(window.localStorage.getItem("cards"))
+    JSON.parse(window.localStorage.getItem("cards")) || []
   );
+
+  // const [cards, setCards] = useState([]);
 
   const [query, setQuery] = useState("");
 
