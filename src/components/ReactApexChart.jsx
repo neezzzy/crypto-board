@@ -28,7 +28,6 @@ export default function ApexChart({ coin }) {
     },
   });
 
-
   useEffect(() => {
     setOptions({
       ...options,
@@ -39,28 +38,34 @@ export default function ApexChart({ coin }) {
   }, [darkMode]);
 
   const fetchCoin = async (coin) => {
-    const res = await fetch(
-      `https://api.coincap.io/v2/candles?exchange=poloniex&interval=d1&baseId=${coin}&quoteId=tether`
-    );
+    const API_URL = import.meta.env.VITE_API_CANDLES;
+    const url = `${API_URL}${coin}USDT&interval=1d`;
 
-    const result = await res.json();
-    let coinData = result.data.slice(-90);
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      let coinData = data.slice(-90);
 
-    coinData.forEach(function (d) {
-      d.open = Math.round(d.open * 10000) / 10000;
-      d.high = Math.round(d.high * 10000) / 10000;
-      d.low = Math.round(d.low * 10000) / 10000;
-      d.close = Math.round(d.close * 10000) / 10000;
-    });
+      coinData.forEach(function (d, i) {
+        d.open = Math.round(d[1] * 10000) / 10000;
+        d.high = Math.round(d[2] * 10000) / 10000;
+        d.low = Math.round(d[3] * 10000) / 10000;
+        d.close = Math.round(d[4] * 10000) / 10000;
+        d.period = new Date(d[0]);
+      });
 
-    let candlestickFormat = coinData.map(function (d) {
-      return {
-        x: new Date(d.period),
-        y: [d.open, d.high, d.low, d.close],
-      };
-    });
-    setSeries([{ data: candlestickFormat }]);
-    setLoading(false);
+      let candlestickFormat = coinData.map(function (d, i) {
+        return {
+          x: d.period,
+          y: [d.open, d.high, d.low, d.close],
+        };
+      });
+
+      setSeries([{ data: candlestickFormat }]);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
