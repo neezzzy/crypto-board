@@ -40,8 +40,9 @@
 
 - React.JS
 - Pico.CSS
+- Covalenthq API
 - CoinGecko API
-- CoinCap API
+- Binance-api
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -51,7 +52,8 @@
 
 ### Prerequisites
 
-1. Register at CoinGecko https://www.coingecko.com/en/api#explore-api
+1. Get API host from https://www.binance.com/en/binance-api
+2. Register at https://www.covalenthq.com/ 
 2. Type your API key and query strings in your .env
 
 ### Installation
@@ -66,7 +68,9 @@
    ```
 3. Enter your API in `.env`
    ```env
-   const API_KEY = 'ENTER YOUR API';
+   const VITE_API_API_COVALENT = 'ENTER YOUR COVALENT API';
+   const VITE_API_HOST = from https://www.covalenthq.com/ API
+   const VITE_API_CANDLES= = 'ENTER YOUR BINANCE HOST API';
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -76,7 +80,7 @@
 ## Roadmap
 
 - [ ] Real time charts
-- [ ] Implement charts
+- [x] Implement charts
 - [x] Search functionality
 - [x] Responsive Design
 - [x] Dark and Light theme
